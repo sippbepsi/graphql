@@ -13,7 +13,6 @@ export function displayAuditGraph(eventStart, auditChanges) {
     let downSum = 0;
     let maxRatio = 2;
 
-    //console.log(auditChanges)
     const ratios = auditChanges.map(change => {
         if (change.type === "up") upSum += change.amount;
         if (change.type === "down") downSum += change.amount;
@@ -31,12 +30,10 @@ export function displayAuditGraph(eventStart, auditChanges) {
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', 'greenyellow');
     path.setAttribute('stroke-width', '2');
+    path.setAttribute('class', 'audit-path'); // Add class for CSS animation
 
     let pathD = '';
 
-
-    // this can cause a horribly distorted chart for the beginning if a user has a very extreme audit-ratio
-    // i'm not sure what can be done to fix it, but that's how it is, for now.
     ratios.forEach((point, index) => {
         const relativeX = (point.date - eventStart) / (end - eventStart);
         const relativeY = scaleY(point.ratio);
@@ -53,7 +50,7 @@ export function displayAuditGraph(eventStart, auditChanges) {
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circle.setAttribute('cx', x);
         circle.setAttribute('cy', y);
-        circle.setAttribute('r', '3');
+        circle.setAttribute('r', '2');
         circle.setAttribute('fill', 'greenyellow');
         circle.addEventListener('mouseover', (e) => showTooltip(e, `Date: ${new Date(point.date).toLocaleDateString()}, Ratio: ${point.ratio.toFixed(2)}`));
         circle.addEventListener('mouseout', hideTooltip);
@@ -63,7 +60,18 @@ export function displayAuditGraph(eventStart, auditChanges) {
     path.setAttribute('d', pathD);
     svg.appendChild(path);
 
-    // adding a line to show if the ratio is positive or negative
+    // Calculate path length and set stroke-dasharray and stroke-dashoffset
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    // Trigger reflow to apply the initial dash offset
+    path.getBoundingClientRect();
+
+    // Apply CSS class to start animation
+    path.classList.add('animate-path');
+
+    // Adding a line to show if the ratio is positive or negative
     const midlineY = scaleY(1) * (xpGraphHeight - 48) + 24;
     const midline = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     midline.setAttribute('x1', '24');

@@ -21,7 +21,29 @@ h1 {
     font-size: 1em;
 }
 
-.loginfo input, button {
+
+.logout {
+    border-radius: 10px;
+    background-color: #494949;
+    color: greenyellow;
+    padding: 6px;
+    text-shadow: #000000;
+    margin-top: -30px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0)
+}
+
+.login {
+    border-radius: 10px;
+    background-color: #494949;
+    color: greenyellow;
+    padding: 6px;
+    text-shadow: #000000;
+    margin-top: 15px;
+}
+
+.loginfo input {
     border-radius: 10px;
     background-color: #494949;
     color: greenyellow;
@@ -61,4 +83,19 @@ h1 {
     margin-top: 8em;
 width: 100%;
     display: table;
+}
+
+.audit-path {
+    stroke-dasharray: 1000; /* This will be overwritten by JavaScript */
+    stroke-dashoffset: 1000; /* This will be overwritten by JavaScript */
+}
+
+.animate-path {
+    animation: draw 4s forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
