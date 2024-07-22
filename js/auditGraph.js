@@ -30,8 +30,7 @@ export function displayAuditGraph(eventStart, auditChanges) {
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', 'greenyellow');
     path.setAttribute('stroke-width', '2');
-    path.setAttribute('class', 'audit-path'); // Add class for CSS animation
-
+    path.setAttribute('class', 'audit-path');
     let pathD = '';
 
     ratios.forEach((point, index) => {
@@ -60,18 +59,13 @@ export function displayAuditGraph(eventStart, auditChanges) {
     path.setAttribute('d', pathD);
     svg.appendChild(path);
 
-    // Calculate path length and set stroke-dasharray and stroke-dashoffset
     const pathLength = path.getTotalLength();
     path.style.strokeDasharray = pathLength;
     path.style.strokeDashoffset = pathLength;
-
-    // Trigger reflow to apply the initial dash offset
     path.getBoundingClientRect();
 
-    // Apply CSS class to start animation
     path.classList.add('animate-path');
 
-    // Adding a line to show if the ratio is positive or negative
     const midlineY = scaleY(1) * (xpGraphHeight - 48) + 24;
     const midline = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     midline.setAttribute('x1', '24');

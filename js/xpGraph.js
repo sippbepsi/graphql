@@ -1,8 +1,6 @@
 import { xpGraphWidth, xpGraphHeight } from '../main.js';
 import { hideTooltip, addLabel, showTooltip, numberToBytes } from './utils.js';
 
-
-
 export function displayXpGraph(eventStart, totalXp, xpChanges) {
     const svg = document.getElementById("xpGraph");
     svg.innerHTML = ''; 
@@ -15,6 +13,7 @@ export function displayXpGraph(eventStart, totalXp, xpChanges) {
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', 'greenyellow');
     path.setAttribute('stroke-width', '2');
+    path.setAttribute('class', 'xp-path');
 
     let pathD = `M 24 ${xpGraphHeight - 24}`;
     let cumulativeXp = 0;
@@ -45,6 +44,13 @@ export function displayXpGraph(eventStart, totalXp, xpChanges) {
 
     path.setAttribute('d', pathD);
     svg.appendChild(path);
+
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+    path.getBoundingClientRect();
+
+    path.classList.add('animate-path');
 
     addLabel(svg, new Date(eventStart).toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" }) + " - 0B", 24, xpGraphHeight - 12, 'start');
     addLabel(svg, new Date().toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" }) + " - " + numberToBytes(totalXp), xpGraphWidth - 24, 24, 'end');

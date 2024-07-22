@@ -1,93 +1,169 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --accent-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --input-bg: #2c2c2c;
+}
+
 body {
-    background-color: #000000;
+    background-color: var(--bg-color);
     font-family: 'Montserrat', sans-serif;
-    color: #FFF8E3;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 h1 {
-    
     text-align: center;
-    font-size: 4em;
+    font-size: 3.5em;
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: var(--accent-color);
 }
 
-.loginfo{
+.loginfo {
     text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.loginfo *{
-    text-align: center;
+.loginfo * {
     font-size: 1em;
+    margin-bottom: 1em;
 }
 
+.login, .loginfo input[type="submit"] {
+    border: none;
+    border-radius: 25px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 .logout {
-    border-radius: 10px;
-    background-color: #494949;
-    color: greenyellow;
-    padding: 6px;
-    text-shadow: #000000;
-    margin-top: -30px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,0)
+    border: none;
+    border-radius: 25px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
 }
 
-.login {
-    border-radius: 10px;
-    background-color: #494949;
-    color: greenyellow;
-    padding: 6px;
-    text-shadow: #000000;
-    margin-top: 15px;
+.logout:hover, .login:hover, .loginfo input[type="submit"]:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
 }
 
-.loginfo input {
-    border-radius: 10px;
-    background-color: #494949;
-    color: greenyellow;
-    padding: 6px;
-    text-shadow: #000000;
-    margin-top: 15px;
+.loginfo input[type="text"], .loginfo input[type="password"] {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    transition: box-shadow 0.3s;
+}
+
+.loginfo input[type="text"]:focus, .loginfo input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--secondary-color);
 }
 
 .userinfo {
     text-align: center;
-    font-size: 1.5em;
-    color: #ffffff;
+    font-size: 1.2em;
+    color: var(--text-color);
+    margin-top: 2em;
 }
-.auditbox *{
-    margin-bottom: 0;
+
+.auditbox * {
+    margin-bottom: 0.5em;
 }
+
 .secondary {
-    font-size: 0.7em;
-    margin: 0px;
+    font-size: 0.8em;
+    color: var(--secondary-color);
 }
 
 .userinfo span {
-    color: greenyellow;
-}
-
-.graph {
-    display: inline-block;
-    text-align: center;
-    display: table-cell;
-}
-
-.graph svg {
-    background-color: #727272;
+    color: var(--accent-color);
+    font-weight: 600;
 }
 
 .graphs {
-    margin-top: 8em;
-width: 100%;
-    display: table;
+    margin-top: 4em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
 }
 
-.audit-path {
-    stroke-dasharray: 1000; /* This will be overwritten by JavaScript */
-    stroke-dashoffset: 1000; /* This will be overwritten by JavaScript */
+.graph {
+    flex: 0 1 auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.graph h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+    color: var(--accent-color);
+}
+
+.graph svg {
+    display: block;
+    background-color: var(--input-bg);
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .graphs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .graph {
+        width: 100%;
+        max-width: 480px;
+    }
+}
+
+.audit-path, .xp-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
 }
 
 .animate-path {
