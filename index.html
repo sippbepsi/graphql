@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <img src="misc/title.png" alt="title" style="display: block; margin: 0 auto;">
+
+    <div id="login" class="section">
+        <div class="loginfo">
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Sign in</button>
+            </form>
+            <div id="loginError"></div>
+        </div>
+    </div>
+
+    <div id="main" class="section" style="display: none;">
+        <button id="logoutButton">Log Out</button>
+
+        <h1 id="displayUser"></h1>
+
+        <div class="userinfo">
+            EXP: <span id="xp"></span>
+
+            <div class="auditbox">
+                Audit ratio: <span id="auditratio"></span><br>
+                Given: <span id="auditdone"></span><br>
+                Received: <span id="auditrecieved"></span>
+            </div>
+        </div>
+
+        <div class="graphs">
+            <div class="graph">
+                <h2>EXP over time</h2>
+                <svg id="xpGraph" width="480" height="240"></svg>
+            </div>
+
+            <div class="graph">
+                <h2>Audit ratio over time</h2>
+                <svg id="auditGraph" width="480" height="240"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
