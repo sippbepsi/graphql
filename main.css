@@ -88,6 +88,26 @@ h1 {
     transition: box-shadow 0.3s;
 }
 
+/* this is a really stupid hack. the username was being filled with white when you type anything in. this solves it. probably not the best solution. */
+.loginfo input[type="text"]:-webkit-autofill,
+.loginfo input[type="password"]:-webkit-autofill,
+.loginfo input[type="text"]:-webkit-autofill:hover,
+.loginfo input[type="password"]:-webkit-autofill:hover,
+.loginfo input[type="text"]:-webkit-autofill:focus,
+.loginfo input[type="password"]:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset !important; /* nothing screams professionality like having to use !important */
+    -webkit-text-fill-color: var(--text-color) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.loginfo input[type="text"]:focus,
+.loginfo input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--secondary-color);
+    background-color: var(--input-bg) !important;
+    color: var(--text-color) !important;
+}
+
 .loginfo input[type="text"]:focus, .loginfo input[type="password"]:focus {
     outline: none;
     box-shadow: 0 0 0 2px var(--secondary-color);
