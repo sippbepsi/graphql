@@ -169,6 +169,7 @@ h1 {
     height: auto;
 }
 
+/* some css for cool animation of the graph slowly appearing when logging in*/
 @media (max-width: 768px) {
     .graphs {
         flex-direction: column;
