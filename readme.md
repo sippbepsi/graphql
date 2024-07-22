@@ -10,4 +10,4 @@ There are two ways of running this project. This is the first
 
 **The second is accessing the page from a live Github Pages website.**
 
-```[https://sippbepsi.github.io/graphql/](https://sippbepsi.github.io/graphql/)```
+```https://sippbepsi.github.io/graphql/```
