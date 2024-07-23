@@ -21,6 +21,7 @@ export function getData(token, userId) {
         query: `{
       user {
         login
+        campus
       }
       transaction{
         type
@@ -72,6 +73,15 @@ export function displayData(data) {
     }
     document.getElementById("displayUser").innerHTML = data.user[0].login;
     document.getElementById("xp").innerHTML = numberToBytes(xp);
+
+    let campus2 = data.user[0].campus;
+    if (campus2.toLowerCase().includes("johvi")) {
+        campus2 = "Jõhvi";
+    } else if (campus2.toLowerCase().includes("jõhvi")) {
+        campus2 = "Jõhvi";  // we keep it real
+    }
+    document.getElementById("campus").innerHTML = campus2;
+    console.log(campus)
 
     document.getElementById("auditrecieved").innerHTML = numberToBytes(auditDown);
     document.getElementById("auditdone").innerHTML = numberToBytes(auditUp);

@@ -120,6 +120,10 @@ h1 {
     margin-top: 2em;
 }
 
+.userinfo > * {
+    margin-bottom: 0.5em;
+}
+
 .auditbox * {
     margin-bottom: 0.5em;
 }
