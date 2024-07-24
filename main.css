@@ -173,6 +173,18 @@ h1 {
     height: auto;
 }
 
+.audit-path, .xp-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    pointer-events: none;
+}
+
+.graph circle {
+    pointer-events: all;
+    cursor: default;
+    z-index: 10;
+}
+
 /* some css for cool animation of the graph slowly appearing when logging in*/
 @media (max-width: 768px) {
     .graphs {
@@ -184,11 +196,6 @@ h1 {
         width: 100%;
         max-width: 480px;
     }
-}
-
-.audit-path, .xp-path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
 }
 
 .animate-path {
